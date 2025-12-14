@@ -1,6 +1,6 @@
 # tmux-cpu-real
 
-# **DISCRAIMER:** made with help of [amp](ampcode.com). based on [tmux-plugins/tmux-cpu](https://github.com/tmux-plugins/tmux-cpu)
+# **DISCRAIMER:** made with help of [amp](https://ampcode.com). based on [tmux-plugins/tmux-cpu](https://github.com/tmux-plugins/tmux-cpu)
 
 ## [ampcode thread](https://ampcode.com/threads/T-019b1e32-aaf0-7086-bd58-f6ceb8622a8e)
 
