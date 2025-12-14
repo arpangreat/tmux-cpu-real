@@ -3,11 +3,11 @@
 CURRENT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
 source "$CURRENT_DIR/helpers.sh"
 
-ram_low_fg_color=""
+ram_low_fg_color="#[fg=green]"
 ram_medium_fg_color="#[fg=yellow]"
 ram_high_fg_color="#[fg=red]"
 
-ram_medium_threshold="30"
+ram_low_threshold="30"
 ram_high_threshold="80"
 
 get_fg_color() {
@@ -17,12 +17,12 @@ get_fg_color() {
   ram_low_fg_color=$(get_tmux_option "@ram_real_low_fg_color" "$ram_low_fg_color")
   ram_medium_fg_color=$(get_tmux_option "@ram_real_medium_fg_color" "$ram_medium_fg_color")
   ram_high_fg_color=$(get_tmux_option "@ram_real_high_fg_color" "$ram_high_fg_color")
-  ram_medium_threshold=$(get_tmux_option "@ram_real_medium_threshold" "$ram_medium_threshold")
+  ram_low_threshold=$(get_tmux_option "@ram_real_low_threshold" "$ram_low_threshold")
   ram_high_threshold=$(get_tmux_option "@ram_real_high_threshold" "$ram_high_threshold")
 
-  if (( $(echo "$ram_percentage >= $ram_high_threshold" | bc -l) )); then
+  if (( $(echo "$ram_percentage > $ram_high_threshold" | bc -l) )); then
     echo "$ram_high_fg_color"
-  elif (( $(echo "$ram_percentage >= $ram_medium_threshold" | bc -l) )); then
+  elif (( $(echo "$ram_percentage > $ram_low_threshold" | bc -l) )); then
     echo "$ram_medium_fg_color"
   else
     echo "$ram_low_fg_color"
