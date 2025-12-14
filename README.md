@@ -1,5 +1,9 @@
 # tmux-cpu-real
 
+# **DISCRAIMER:** made with help of [amp](ampcode.com). based on [tmux-plugins/tmux-cpu](https://github.com/tmux-plugins/tmux-cpu)
+
+## [ampcode thread](https://ampcode.com/threads/T-019b1e32-aaf0-7086-bd58-f6ceb8622a8e)
+
 A tmux plugin that shows **real CPU and RAM usage** (CPU excludes I/O wait).
 
 Unlike the standard tmux-cpu plugin which shows `100 - idle` (which includes I/O wait), this plugin shows actual CPU work: `user + nice + system + irq + softirq`.
@@ -36,12 +40,12 @@ set -g status-right "#{cpu_real_fg_color}CPU: #{cpu_real_percentage}|#{ram_real_
 
 ## Variables
 
-| Variable | Description |
-|----------|-------------|
+| Variable                 | Description                         |
+| ------------------------ | ----------------------------------- |
 | `#{cpu_real_percentage}` | CPU percentage (excluding I/O wait) |
-| `#{cpu_real_fg_color}` | Foreground color based on CPU usage |
-| `#{ram_real_percentage}` | RAM percentage (used / total) |
-| `#{ram_real_fg_color}` | Foreground color based on RAM usage |
+| `#{cpu_real_fg_color}`   | Foreground color based on CPU usage |
+| `#{ram_real_percentage}` | RAM percentage (used / total)       |
+| `#{ram_real_fg_color}`   | Foreground color based on RAM usage |
 
 ## Options
 
@@ -79,10 +83,10 @@ set -g @ram_real_high_fg_color "#[fg=red]"
 
 ## Difference from tmux-cpu
 
-| Metric | tmux-cpu | tmux-cpu-real |
-|--------|----------|---------------|
-| CPU | `100 - idle` (includes I/O wait) | `user + nice + system + irq + softirq` (no I/O wait) |
-| RAM | Same | Same |
+| Metric | tmux-cpu                         | tmux-cpu-real                                        |
+| ------ | -------------------------------- | ---------------------------------------------------- |
+| CPU    | `100 - idle` (includes I/O wait) | `user + nice + system + irq + softirq` (no I/O wait) |
+| RAM    | Same                             | Same                                                 |
 
 This makes the CPU reading consistent with tools like `btop` and `htop`.
 
